@@ -1,11 +1,12 @@
 import React from 'react';
 
 import './App.css';
+import Home from '../Home/Home';
 
 function App() {
   return (
     <div className="App">
-      <h1>Bay Area Covid-19 Tracker</h1>
+      <Home />
     </div>
   );
 }
