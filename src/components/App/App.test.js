@@ -1,9 +1,20 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { shallow } from 'enzyme';
+
 import App from './App';
 
-test('renders h1 tag', () => {
-  const { getByText } = render(<App />);
-  const h1Tag = getByText(/Bay Area Covid-19 Tracker/i);
-  expect(h1Tag).toBeInTheDocument();
+describe('tests for App component', () => {
+  describe('snapshot tests', () => {
+    it('renders without crashing', () => {
+      const tree = shallow(<App />);
+      expect(tree).toMatchSnapshot();
+    });
+  });
+
+  describe('unit tests', () => {
+    it('contains Home component', () => {
+      const wrapper = shallow(<App />);
+      expect(wrapper.find('Home').exists()).toBe(true);
+    });
+  });
 });
