@@ -38,7 +38,7 @@ describe('tests for api calls', () => {
         axios.get.mockImplementationOnce(() => Promise.resolve(data));
 
         await expect(fetchDailyReport()).resolves.toEqual(data);
-        expect(axios.get).toHaveBeenCalledWith(`${process.env.REACT_APP_API}/daily-report/`)
+        expect(axios.get).toHaveBeenCalledWith(`${process.env.REACT_APP_API}/daily-reports/`)
     });
 
     it('fetches erroneously data from API', async () => {
@@ -47,5 +47,5 @@ describe('tests for api calls', () => {
 
         axios.get.mockImplementationOnce(() => Promise.reject(error));
         await expect(fetchDailyReport()).resolves.toEqual({ err: error, msg });
-    })
+    });
 });
