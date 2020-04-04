@@ -5,7 +5,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 import './Map.css';
 
-export default function Map({ dailyReport }) {
+export default function Map({ reports }) {
 	const [viewport, setViewport] = useState({
 		width: 1000,
 		height: 550,
@@ -26,5 +26,5 @@ export default function Map({ dailyReport }) {
 	);
 }
 
-Map.propTypes = { dailyReport: PropTypes.object };
-Map.defaultProps = { dailyReport: {} };
+Map.propTypes = { reports: PropTypes.array };
+Map.defaultProps = { reports: [] };
