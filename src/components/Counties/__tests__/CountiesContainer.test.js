@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 
 import CountiesContainer from '../CountiesContainer';
+import CountyCard from '../CountyCard';
 
 const dailyReport = {
 	"Napa": {
@@ -40,6 +41,11 @@ describe('tests for CountiesContainer', () => {
 		it('renders with dailyReport data when passed as prop', () => {
 			const wrapper = mount(<CountiesContainer dailyReport={dailyReport} />);
 			expect(wrapper.props().dailyReport).toEqual(dailyReport);
+		});
+
+		it('contains at least one CountyCard component', () => {
+			const wrapper = shallow(<CountiesContainer dailyReport={dailyReport} />);
+			expect(wrapper.find('CountyCard').exists()).toBe(true);
 		});
 	});
 });
