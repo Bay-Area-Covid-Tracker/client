@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for CountyCard snapshot tests renders without crashing 1`] = `"<div class=\\"MuiPaper-root MuiCard-root makeStyles-root-1 MuiPaper-elevation4 MuiPaper-rounded\\"><div class=\\"MuiCardContent-root\\"><h5 class=\\"MuiTypography-root MuiTypography-h5\\"></h5><br/><p class=\\"MuiTypography-root MuiTypography-body1\\">Confirmed</p><h6 class=\\"MuiTypography-root MuiTypography-h6\\">0</h6><p class=\\"MuiTypography-root MuiTypography-body1\\">Deaths</p><h6 class=\\"MuiTypography-root MuiTypography-h6\\">0</h6></div></div>"`;
