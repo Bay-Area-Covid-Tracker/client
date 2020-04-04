@@ -14,7 +14,7 @@ export default function CountyCard({ county }) {
 	const classes = useStyles();
 
 	return (
-		<Card className={classes.root}>
+		<Card className={classes.root} elevation={4}>
 			<CardContent>
 				<Typography variant="h5">
 					{county.county}
