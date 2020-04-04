@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 
 import CountiesContainer from '../CountiesContainer';
-import CountyCard from '../CountyCard';
 
 const dailyReport = {
 	"Napa": {
