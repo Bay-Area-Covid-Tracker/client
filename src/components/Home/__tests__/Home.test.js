@@ -71,6 +71,6 @@ describe('tests for Home component', () => {
       const wrapper = shallow(<Component />);
       expect(didMountSpy).toHaveBeenCalled();
       expect(apis.fetchDailyReport).toHaveBeenCalled();
-    })
+    });
   });
 });
