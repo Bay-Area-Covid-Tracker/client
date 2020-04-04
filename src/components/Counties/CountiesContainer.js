@@ -7,7 +7,6 @@ import CountyCard from './CountyCard';
 export default function CountiesContainer({ dailyReport }) {
 	return (
 		<div>
-			<p>Counties container</p>
 			<Grid
 				container
 				direction="row"

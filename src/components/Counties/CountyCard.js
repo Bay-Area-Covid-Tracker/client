@@ -19,6 +19,19 @@ export default function CountyCard({ county }) {
 				<Typography variant="h5">
 					{county.county}
 				</Typography>
+				<br/>
+				<Typography variant="body1">
+					Confirmed
+				</Typography>
+				<Typography variant="h6">
+					{county.confirmed}
+				</Typography>
+				<Typography variant="body1">
+					Deaths
+				</Typography>
+				<Typography variant="h6">
+					{county.deaths}
+				</Typography>
 			</CardContent>
 		</Card>
 	);
