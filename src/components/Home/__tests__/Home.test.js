@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Component from '../Home';
+import Home from '../Home';
 import * as apis from '../../../api';
 
 // Define test data
@@ -34,13 +34,10 @@ const data = {
   }
 };
 
-
-
-
 describe('tests for Home component', () => {
   describe('snapshot tests', () => {
     it('renders without crashing', () => {
-        const tree = shallow(<Component />);
+        const tree = shallow(<Home />);
         expect(tree).toMatchSnapshot();
     });
   });
@@ -53,13 +50,13 @@ describe('tests for Home component', () => {
       didMountSpy.mockClear();
     });
 
-    didMountSpy = jest.spyOn(Component.prototype, 'componentDidMount');
+    didMountSpy = jest.spyOn(Home.prototype, 'componentDidMount');
 
     it('fetches daily reports', () => {
       // Setup mock API call to successfully resolve data
       apis.fetchDailyReport = jest.fn(() => Promise.resolve(data));
 
-      const wrapper = shallow(<Component />);
+      shallow(<Home />);
       expect(didMountSpy).toHaveBeenCalled();
       expect(apis.fetchDailyReport).toHaveBeenCalled();
     });
@@ -68,7 +65,7 @@ describe('tests for Home component', () => {
       // Reject and throw error if data cannot be resolved
       apis.fetchDailyReport = jest.fn(() => Promise.reject('Error!'));
 
-      const wrapper = shallow(<Component />);
+      shallow(<Home />);
       expect(didMountSpy).toHaveBeenCalled();
       expect(apis.fetchDailyReport).toHaveBeenCalled();
     });

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import Grid from '@material-ui/core/Grid';
 
 import { fetchDailyReport } from '../../api';
 import CountiesContainer from '../Counties/CountiesContainer';
+import Map from '../Map/Map';
 
 export default class Home extends Component {
 	constructor(props) {
@@ -24,8 +26,12 @@ export default class Home extends Component {
 
 		return (
 			<div>
-				<h1>Bay Area Covid-19 Tracker</h1>
-				<CountiesContainer dailyReport={dailyReport} />
+				<Grid container justify="center" alignItems="center">
+					<CountiesContainer dailyReport={dailyReport} />
+				</Grid>
+				<Grid container justify="center" alignItems="center">
+					<Map />
+				</Grid>
 			</div>
 		);
 	}
