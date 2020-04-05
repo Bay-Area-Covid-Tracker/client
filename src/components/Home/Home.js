@@ -9,18 +9,18 @@ import Map from '../Map/Map';
 export default class Home extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { reports: [], isLoading: true }
+		this.state = { dailyReport: {}, isLoading: true }
 	}
 
   componentDidMount() {
 		fetchDailyReport()
 			.then(res => res.data)
-			.then(data => this.setState({ reports: [ ...data.reports ], isLoading: false }))
+			.then(data => this.setState({ dailyReport: { ...data.dailyReport }, isLoading: false }))
 			.catch(err => console.error(err));
 	}
 
 	render() {
-		const { reports, isLoading } = this.state;
+		const { dailyReport, isLoading } = this.state;
 		
 		if (isLoading)
 			return <p>Loading page...</p>;
@@ -28,10 +28,10 @@ export default class Home extends Component {
 		return (
 			<div>
 				<Grid container justify="center" alignItems="center">
-					<CountiesContainer reports={reports} />
+					<CountiesContainer features={dailyReport.features} />
 				</Grid>
 				<Grid container justify="center" alignItems="center">
-					<Map reports={reports} />
+					<Map dailyReport={dailyReport} />
 				</Grid>
 			</div>
 		);

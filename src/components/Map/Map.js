@@ -1,38 +1,20 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import useSuperCluster from 'use-supercluster';
-import ReactMapGL, { Marker } from 'react-map-gl';
+import ReactMapGL, { Source, Layer } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 import './Map.css';
+import { clusterLayer, clusterCountLayer, unclusteredPointLayer } from './layers';
 
-export default function Map({ reports }) {
+export default function Map({ dailyReport }) {
 	const [viewport, setViewport] = useState({
 		width: 1000,
 		height: 550,
 		latitude: 37.7577,
     longitude: -122.4376,
-    zoom: 8
+    zoom: 7.5
 	});
 	const mapRef = useRef();
-	
-	// Get map bounds
-	const bounds = mapRef.current
-		? mapRef.current
-				.getMap()
-				.getBounds()
-				.toArray()
-				.flat()
-		:	null;
-
-	// Get clusers
-	// reports contains the data structured to display
-	const { clusters } = useSuperCluster({
-		points: [...reports],
-		bounds,
-		zoom: viewport.zoom,
-		options: { radius: 75, maxZoom: 20 }
-	});
 
 	return (
 		<div id="map-container">
@@ -41,28 +23,24 @@ export default function Map({ reports }) {
 				mapStyle="mapbox://styles/mapbox/dark-v9"
 				onViewportChange={newViewport => setViewport({ ...newViewport })}
 				mapboxApiAccessToken={process.env.REACT_APP_MapboxAccessToken}
-				ref={mapRef}
+				interactiveLayerIds={[clusterLayer.id]}
 			>
-				{clusters.map(cluster => {
-					const { properties, geometry } = cluster;
-					const [longitude, latitude] = geometry.coordinates;
-
-					return (
-						<Marker 
-							key={properties.id}
-							latitude={latitude}
-							longitude={longitude}
-						>
-							<span className="cluster-marker">
-								{properties.confirmed}
-							</span>
-						</Marker>
-					);
-				})}
+				<Source
+					type="geojson"
+					data={dailyReport}
+					cluster={true}
+					clusterMaxZoom={14}
+					clusterRadius={50}
+					ref={mapRef}
+				>
+					<Layer {...clusterLayer} />
+					<Layer {...clusterCountLayer} />
+					<Layer {...unclusteredPointLayer} />
+				</Source>
 			</ReactMapGL>
 		</div>
 	);
 }
 
-Map.propTypes = { reports: PropTypes.array };
-Map.defaultProps = { reports: [] };
+Map.propTypes = { dailyReport: PropTypes.object };
+Map.defaultProps = { dailyReport: {} };

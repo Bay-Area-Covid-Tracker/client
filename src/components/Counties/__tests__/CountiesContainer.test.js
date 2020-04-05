@@ -3,7 +3,7 @@ import { shallow, mount } from 'enzyme';
 
 import CountiesContainer from '../CountiesContainer';
 
-const reports = [
+const features = [
 	{
 		"type": "Feature",
 		"properties": {
@@ -54,12 +54,12 @@ describe('tests for CountiesContainer', () => {
 
 	describe('unit tests', () => {
 		it('renders with dailyReport data when passed as prop', () => {
-			const wrapper = mount(<CountiesContainer reports={reports} />);
-			expect(wrapper.props().reports).toEqual(reports);
+			const wrapper = mount(<CountiesContainer features={features} />);
+			expect(wrapper.props().features).toEqual(features);
 		});
 
 		it('contains at least one CountyCard component', () => {
-			const wrapper = shallow(<CountiesContainer reports={reports} />);
+			const wrapper = shallow(<CountiesContainer features={features} />);
 			expect(wrapper.find('CountyCard').exists()).toBe(true);
 		});
 	});

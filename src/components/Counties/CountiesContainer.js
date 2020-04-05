@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import './Counties.css';
 import CountyCard from './CountyCard';
 
-export default function CountiesContainer({ reports }) {
+export default function CountiesContainer({ features }) {
 	return (
 		<div>
 			<div id="row1" className="row">
@@ -16,7 +16,7 @@ export default function CountiesContainer({ reports }) {
 					alignItems="center"
 					spacing={3}
 				>
-					{reports.slice(0, 5).map(report => (
+					{features.slice(0, 5).map(report => (
 						<Grid item key={report.properties.id}>
 							<CountyCard county={report.properties} />
 						</Grid>
@@ -31,7 +31,7 @@ export default function CountiesContainer({ reports }) {
 					alignItems="center"
 					spacing={3}
 				>
-					{reports.slice(5).map(report => (
+					{features.slice(5).map(report => (
 						<Grid item key={report.properties.id}>
 							<CountyCard county={report.properties} />
 						</Grid>
@@ -42,5 +42,5 @@ export default function CountiesContainer({ reports }) {
 	);
 }
 
-CountiesContainer.propTypes = { reports: PropTypes.array };
-CountiesContainer.defaultProps = { reports: [] };
+CountiesContainer.propTypes = { features: PropTypes.array };
+CountiesContainer.defaultProps = { features: [] };
