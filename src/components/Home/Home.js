@@ -5,6 +5,7 @@ import { fetchDailyReport } from '../../api';
 import CountiesContainer from '../Counties/CountiesContainer';
 import Map from '../Map/Map';
 
+// Eventually make this a React hook
 export default class Home extends Component {
 	constructor(props) {
 		super(props);
@@ -30,7 +31,7 @@ export default class Home extends Component {
 					<CountiesContainer reports={reports} />
 				</Grid>
 				<Grid container justify="center" alignItems="center">
-					<Map />
+					<Map reports={reports} />
 				</Grid>
 			</div>
 		);
