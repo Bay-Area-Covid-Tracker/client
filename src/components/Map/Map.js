@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import ReactMapGL, { Source, Layer } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -7,21 +7,20 @@ import './Map.css';
 import { clusterLayer, clusterCountLayer, unclusteredPointLayer } from './layers';
 
 export default function Map({ dailyReport }) {
-	const [viewport, setViewport] = useState({
+	const viewport = {
 		width: 1000,
 		height: 550,
 		latitude: 37.7577,
     longitude: -122.4376,
-    zoom: 7.5
-	});
+    zoom: 7.4
+	};
 	const mapRef = useRef();
 
 	return (
 		<div id="map-container">
 			<ReactMapGL 
 				{...viewport} 
-				mapStyle="mapbox://styles/mapbox/dark-v9"
-				onViewportChange={newViewport => setViewport({ ...newViewport })}
+				mapStyle="mapbox://styles/mapbox/dark-v10"
 				mapboxApiAccessToken={process.env.REACT_APP_MapboxAccessToken}
 				interactiveLayerIds={[clusterLayer.id]}
 			>

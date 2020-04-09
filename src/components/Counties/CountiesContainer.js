@@ -17,8 +17,8 @@ export default function CountiesContainer({ features }) {
 					spacing={3}
 				>
 					{features.slice(0, 5).map(report => (
-						<Grid item key={report.properties.id}>
-							<CountyCard county={report.properties} />
+						<Grid item key={report.county.id}>
+							<CountyCard county={report.county} />
 						</Grid>
 					))}
 				</Grid>
@@ -32,8 +32,8 @@ export default function CountiesContainer({ features }) {
 					spacing={3}
 				>
 					{features.slice(5).map(report => (
-						<Grid item key={report.properties.id}>
-							<CountyCard county={report.properties} />
+						<Grid item key={report.county.id}>
+							<CountyCard county={report.county} />
 						</Grid>
 					))}
 				</Grid>

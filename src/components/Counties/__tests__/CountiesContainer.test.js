@@ -6,7 +6,7 @@ import CountiesContainer from '../CountiesContainer';
 const features = [
 	{
 		"type": "Feature",
-		"properties": {
+		"county": {
 			"id": 6001,
 			"county": "Alameda",
 			"state": "California",
@@ -14,6 +14,10 @@ const features = [
 			"lastUpdate": "2020-04-01 21:58:49",
 			"confirmed": 313,
 			"deaths": 7
+		},
+		"properties": {
+			"id": 6001,
+			"point_count": 313
 		},
 		"geometry": {
 			"type": "Point",
@@ -25,7 +29,7 @@ const features = [
 	},
 	{
 		"type": "Feature",
-		"properties": {
+		"county": {
 			"id": 6013,
 			"county": "Contra Costa",
 			"state": "California",
@@ -33,6 +37,10 @@ const features = [
 			"lastUpdate": "2020-04-01 21:58:49",
 			"confirmed": 249,
 			"deaths": 3
+		},
+		"properties": {
+			"id": 6013,
+			"point_count": 249
 		},
 		"geometry": {
 			"type": "Point",
