@@ -1,0 +1,14 @@
+#map-container {
+	margin: 5px 0 15px 0;
+}
+
+.cluster-marker {
+	color: #fff;
+	font-size: 12px;
+  background: #1978c8;
+  border-radius: 50%;
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

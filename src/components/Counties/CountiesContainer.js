@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import './Counties.css';
 import CountyCard from './CountyCard';
 
-export default function CountiesContainer({ dailyReport }) {
+export default function CountiesContainer({ features }) {
 	return (
 		<div>
 			<div id="row1" className="row">
@@ -16,21 +16,11 @@ export default function CountiesContainer({ dailyReport }) {
 					alignItems="center"
 					spacing={3}
 				>
-					<Grid item>
-						<CountyCard county={dailyReport['Alameda']} />
-					</Grid>
-					<Grid item>
-						<CountyCard county={dailyReport['Contra Costa']} />
-					</Grid>
-					<Grid item>
-						<CountyCard county={dailyReport['Marin']} />
-					</Grid>
-					<Grid item>
-						<CountyCard county={dailyReport['Napa']} />
-					</Grid>
-					<Grid item>
-						<CountyCard county={dailyReport['San Mateo']} />
-					</Grid>
+					{features.slice(0, 5).map(report => (
+						<Grid item key={report.county.id}>
+							<CountyCard county={report.county} />
+						</Grid>
+					))}
 				</Grid>
 			</div>
 			<div id="row2" className="row">
@@ -41,23 +31,16 @@ export default function CountiesContainer({ dailyReport }) {
 					alignItems="center"
 					spacing={3}
 				>
-					<Grid item>
-						<CountyCard county={dailyReport['San Francisco']} />
-					</Grid>
-					<Grid item>
-						<CountyCard county={dailyReport['Santa Clara']} />
-					</Grid>
-					<Grid item>
-						<CountyCard county={dailyReport['Solano']} />
-					</Grid>
-					<Grid item>
-						<CountyCard county={dailyReport['Sonoma']} />
-					</Grid>
+					{features.slice(5).map(report => (
+						<Grid item key={report.county.id}>
+							<CountyCard county={report.county} />
+						</Grid>
+					))}
 				</Grid>
 			</div>
 		</div>
 	);
 }
 
-CountiesContainer.propTypes = { dailyReport: PropTypes.object };
-CountiesContainer.defaultProps = { dailyReport: {} };
+CountiesContainer.propTypes = { features: PropTypes.array };
+CountiesContainer.defaultProps = { features: [] };

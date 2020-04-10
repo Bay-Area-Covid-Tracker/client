@@ -11,7 +11,10 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-map-gl": "^5.2.3",
+    "react-scripts": "3.4.1",
+    "supercluster": "^7.0.0",
+    "use-supercluster": "^0.2.6"
   },
   "scripts": {
     "start": "react-scripts start",
