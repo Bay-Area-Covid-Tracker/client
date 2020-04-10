@@ -23,6 +23,14 @@ export default function NavigationBar() {
 					Bay Area Covid-19 Tracker
 				</Typography>
 				<Link className={classes.links} to="/"><Button color="inherit">Home</Button></Link>
+				<Link className={classes.links} to="/about"><Button color="inherit">About</Button></Link>
+				<a href="https://github.com/Bay-Area-Covid-Tracker"
+					rel="noopener noreferrer" 
+					target="_blank" 
+					className={classes.links}
+				>
+					<Button color="inherit">GitHub</Button>
+				</a>
 			</Toolbar>
 		</AppBar>
 	);
