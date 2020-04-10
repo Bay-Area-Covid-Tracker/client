@@ -1,30 +1,32 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 
 import { fetchDailyReport } from '../../api';
 import CountiesContainer from '../Counties/CountiesContainer';
 import Map from '../Map/Map';
 
-// Eventually make this a React hook
-export default class Home extends Component {
-	constructor(props) {
-		super(props);
-		this.state = { dailyReport: {}, isLoading: true }
-	}
+export default function Home() {
+	const [dailyReport, setDailyReport] = useState({});
+	const [isLoading, setIsLoading] = useState(true);
+	const [msg, setMsg] = useState('');
+	const [err, setErr] = useState({})
 
-  componentDidMount() {
+	useEffect(() => {
 		fetchDailyReport()
 			.then(res => res.data)
-			.then(data => this.setState({ dailyReport: { ...data.dailyReport }, isLoading: false }))
-			.catch(err => console.error(err));
-	}
+			.then((data) => {
+				setDailyReport({ ...data.dailyReport });
+				setIsLoading(false);
+			})
+			.catch((err) => {
+				console.error(err);
+				setMsg('Whoops. Something went wrong! Sorry for the inconvenience.');
+				setErr({ ...err });
+				setIsLoading(false);
+			});
+	}, []);
 
-	render() {
-		const { dailyReport, isLoading } = this.state;
-		
-		if (isLoading)
-			return <p>Loading page...</p>;
-
+	if (Object.keys(dailyReport).length > 0 && !isLoading)
 		return (
 			<div>
 				<Grid container justify="center" alignItems="center">
@@ -35,5 +37,8 @@ export default class Home extends Component {
 				</Grid>
 			</div>
 		);
-	}
+	if (err && msg && !isLoading)
+		return <p>{msg}</p>;
+	
+	return <p>Loading page...</p>
 }

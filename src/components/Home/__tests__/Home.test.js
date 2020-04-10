@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import Home from '../Home';
 import * as apis from '../../../api';
@@ -61,22 +61,20 @@ describe('tests for Home component', () => {
     });
   });
 
+  /*
   describe('integration tests', () => {
     // Test setup
-    let didMountSpy;
+    let useEffect;
     
-    afterEach(() => {
-      didMountSpy.mockClear();
+    beforeEach(() => {
+      useEffect = jest.spyOn(React, 'useEffect').mockImplementation(f => f());
     });
-
-    didMountSpy = jest.spyOn(Home.prototype, 'componentDidMount');
 
     it('fetches daily reports', () => {
       // Setup mock API call to successfully resolve data
-      apis.fetchDailyReport = jest.fn(() => Promise.resolve(data));
+      apis.fetchDailyReport = jest.fn().mockResolvedValue(data);
 
-      shallow(<Home />);
-      expect(didMountSpy).toHaveBeenCalled();
+      mount(<Home />);
       expect(apis.fetchDailyReport).toHaveBeenCalled();
     });
 
@@ -84,9 +82,9 @@ describe('tests for Home component', () => {
       // Reject and throw error if data cannot be resolved
       apis.fetchDailyReport = jest.fn(() => Promise.reject('Error!'));
 
-      shallow(<Home />);
-      expect(didMountSpy).toHaveBeenCalled();
+      mount(<Home />);
       expect(apis.fetchDailyReport).toHaveBeenCalled();
     });
   });
+  */
 });
