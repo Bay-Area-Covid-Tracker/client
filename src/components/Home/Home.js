@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 
+import './Home.css';
 import { fetchDailyReport } from '../../api';
 import CountiesContainer from '../Counties/CountiesContainer';
 import Map from '../Map/Map';
@@ -38,7 +39,11 @@ export default function Home() {
 			</div>
 		);
 	if (err && msg && !isLoading)
-		return <p>{msg}</p>;
+		return (
+			<div id="err-msg">
+				<span>{msg}</span>
+			</div>
+		);
 	
 	return <p>Loading page...</p>
 }

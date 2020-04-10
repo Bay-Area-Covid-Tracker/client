@@ -6,7 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
-	root: { width: 250 },
+	root: { width: 250, textAlign: 'center' },
 	title: { fontSize: 14 }
 });
 

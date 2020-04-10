@@ -11,10 +11,11 @@ describe('tests for App component', () => {
     });
   });
 
+  // Renders with Main component that contains React router
   describe('unit tests', () => {
-    it('contains Home component', () => {
+    it('contains Main component', () => {
       const wrapper = shallow(<App />);
-      expect(wrapper.find('Home').exists()).toBe(true);
+      expect(wrapper.find('Main').exists()).toBe(true);
     });
   });
 });
